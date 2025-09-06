@@ -53,22 +53,13 @@ pipeline {
             }
         }
         
-        stage("Git: Code update and push to GitHub"){
+        stage("Git: Code update "){
             steps{
                 script{
                     withCredentials([gitUsernamePassword(credentialsId: 'Github-cred', gitToolName: 'Default')]) {
                         sh '''
                         echo "Checking repository status: "
                         git status
-                    
-                        echo "Adding changes to git: "
-                        git add .
-                        
-                        echo "Commiting changes: "
-                        git commit -m "Updated environment variables"
-                        
-                        echo "Pushing changes to github: "
-                        git push https://github.com/Developer-SANKET/Wanderlust-Mega-Project.git main
                     '''
                     }
                 }
